@@ -10,7 +10,7 @@ ssid = "DCI-Lab"
 password = "DCI-Lab2024"
 
 # Configuración de la URL del archivo de actualización en GitHub
-github_url = "https://raw.githubusercontent.com/VELH02/Red-SAMARC/refs/heads/main/Firmware/Latest/Firmware.py"  # Cambia esta URL según tu archivo
+github_url = "https://raw.githubusercontent.com/VELH02/SMARC-Network/refs/heads/main/Firmware/Latest/Firmware.py"  # Cambia esta URL según tu archivo
 
 # Función para conectarse a la red WiFi
 def connect_to_wifi():
