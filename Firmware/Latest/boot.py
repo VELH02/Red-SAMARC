@@ -6,8 +6,8 @@ from machine import Pin
 import time
 
 # Configuración de red WiFi
-ssid = "DCI-Lab"
-password = "DCI-Lab2024"
+ssid = "SSID NAME"
+password = "PASSWORD"
 
 # Configuración de la URL del archivo de actualización en GitHub
 github_url = "https://raw.githubusercontent.com/VELH02/SMARC-Network/refs/heads/main/Firmware/Latest/Firmware.py"  # Cambia esta URL según tu archivo
