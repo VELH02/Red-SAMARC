@@ -1,5 +1,8 @@
 MIT License
 
+Autonomous Sensor Network for Monitoring, Alarming, and Reporting Air Quality in Vulnerable Areas (Red S.A.M.A.R.C.)
+This project aims to develop a low-cost sensor network for monitoring air quality in areas surrounding Cerro Patacón, with real-time data management displayed in graphs for both government and private institutions. This project utilizes LoRa technology.
+
 Copyright (c) 2024 Victor Lau
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
