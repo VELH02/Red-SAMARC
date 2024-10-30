@@ -1,4 +1,5 @@
-# Red de Sensores autonomos para el monitoreo, alarma y reporte de la calidad del aire en areas vulnerables (Red S. A. M. A. R. C.)
-Desarrollar una red de sensores de bajo costo para el monitoreo la calidad del aire en áreas circundantes a Cerro Patacón y gestión de la información obtenida en gráficas en tiempo real para instituciones estatales y privadas. 
+#SMARC Network: Smart Monitoring, Alarming, and Reporting of Air Quality in Critical Areas
 
-Este Proyecto Utiliza LoRa
+This project aims to develop a low-cost sensor network to monitor air quality in the areas surrounding Cerro Patacón, Panama. Conducted at the Technological University of Panama (UTP), the SMARC Network provides real-time data visualization in graphs for both government and private institutions, supporting enhanced environmental monitoring and rapid response.
+
+This project utilizes LoRa technology.
