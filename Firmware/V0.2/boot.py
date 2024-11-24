@@ -4,22 +4,27 @@ import machine
 import os
 from machine import Pin
 import time
+from info import WIFI_SSID, WIFI_PASSWORD
 
 # Configuración de red WiFi
-ssid = "FamiliaPeluche"
-password = "sap61663Gamer"
+ssid = WIFI_SSID
+password = WIFI_PASSWORD
 
 # Configuración de la URL del archivo de actualización en GitHub
 github_url = "https://raw.githubusercontent.com/VELH02/Red-SAMARC/refs/heads/main/Firmware/Latest/Firmware.py"  # Cambia esta URL según tu archivo
 
 # Función para conectarse a la red WiFi
 def connect_to_wifi():
-    wlan = network.WLAN(network.STA_IF)
-    wlan.active(True)
-    wlan.connect(ssid, password)
-    while not wlan.isconnected():
-        pass
-    print("Conectado a WiFi:", wlan.ifconfig())
+    try:
+        print("Conectandose a", ssid,"...")
+        wlan = network.WLAN(network.STA_IF)
+        wlan.active(True)
+        wlan.connect(ssid, password)
+        while not wlan.isconnected():
+            pass
+        print("Conectado a WiFi:", wlan.ifconfig())
+    except:
+        print("Error al conectar a ", ssid)
 
 # Función para descargar el archivo de actualización
 def download_update():
@@ -52,3 +57,4 @@ def run_main():
 #connect_to_wifi()     # Conectar a la red WiFi
 #download_update()     # Descargar la última versión de main.py desde GitHub
 #run_main()            # Ejecutar el archivo descargado
+
