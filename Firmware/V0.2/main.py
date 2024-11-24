@@ -1,5 +1,6 @@
 from machine import Pin, UART
 import time
+# from Adafruit_IO import *
 import sds011
 import dht
 import random
@@ -12,7 +13,7 @@ relay_3 = Pin(32, Pin.OUT)
 relay_4 = Pin(26, Pin.OUT)
 
 d = dht.DHT22(machine.Pin(19))
-uart = UART(1, baudrate = 9600, rx = 16, tx = 17)
+uart = UART(1, baudrate = 9600, rx = 17, tx = 16)
 dust_sensor = sds011.SDS011(uart)
 
 # Nombre del archivo CSV
@@ -22,7 +23,7 @@ archivo_csv = 'datos_sensores.csv'  # Ruta donde se almacenarán los datos
 def inicializar_csv():
     try:
         with open(archivo_csv, 'w') as file:  # Abrir en modo de escritura para agregar encabezados
-            file.write('Fecha,Temperatura (°C),Humedad (%),Presión (hPa),PM2.5 (µg/m³),PM10 (µg/m³)\n')
+            file.write('Fecha,Temperatura (°C),Humedad (%),Presion (hPa),PM2.5 (µg/m³),PM10 (µg/m³)\n')
     except OSError as e:
         print("Error al crear el archivo CSV:", e)
 
@@ -35,17 +36,23 @@ def guardar_datos(tr, h, p, pm25, pm10):
     # Guardar los datos en el archivo CSV
     with open(archivo_csv, 'a') as file:
         file.write(f'{fecha_hora},{tr},{h},{p},{pm25},{pm10}\n')
-
+    print("Datos guardados")
+    
 # Función para enviar datos NO SIRVEEE
 def enviar_datos():
-    aio.send("temperatura", tr)
-    aio.send("presion", p)
-    aio.send("humedad", h)
-    aio.send("particulas-pm2-dot-5", pm25)
-    aio.send("particulas-pm10", pm10)
+    try:
+        respuesta = urequests.get(url + "&field1=" + str(tr) + "&field2=" + str(h) + "&field3=" + str(pm25) + "&field4=" + str(pm10))
+        print("Respuesta:", respuesta.status_code)
+        respuesta.close()
+        ultima_peticion = time.time()
+    except:
+        print("Error de envio de datos")
 
 # Inicializamos el archivo CSV si no existe
 inicializar_csv()
+
+#tiempo de espera para calentar sensores
+time.sleep(5)
 
 # Bucle principal
 while True:
@@ -66,9 +73,10 @@ while True:
     print(f'PM10: {pm10} µg/m³')
     
     # Guardamos los datos en el archivo CSV
-    guardar_datos(tr, h, p, pm25, pm10)
-    print("Datos guardados")
+    #guardar_datos(tr, h, p, pm25, pm10)
     
-    # enviar_datos()  # nO SIRVE
+    
+    enviar_datos()  # si SIRVE
     
     time.sleep(5)  # Esperar un minuto antes de la siguiente lectura
+
