@@ -46,3 +46,5 @@ The initial deployment of the **SMARC Network** took place at a designated locat
 ---
 
 This deployment phase validated the system's ability to operate reliably in outdoor environments, confirming the viability of its energy management, data collection, and communication systems.
+
+You can Check all the Information collected by this deployment here: [ThingSpeak Channel](https://thingspeak.mathworks.com/channels/2760762)
